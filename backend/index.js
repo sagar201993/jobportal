@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { configDotenv } from "dotenv";
 import connectDB from "./utils/db.js";
+import userRoute from "./routes/user.routes.js";
 const app = express();
 configDotenv();
 app.use(express.json());
@@ -16,16 +17,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 const PORT = process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-  return res.status(200).json({
-    message: "Welcome to the backend server",
-  });
-});
-app.get("/", (req, res) => {
-  return res.status(200).json({
-    message: "Welcome to the backend project",
-  });
-});
+app.use("/api/v1/user", userRoute);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
