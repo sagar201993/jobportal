@@ -1,0 +1,40 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+*.egg-info/
+.Python
+
+# Mac system files
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
