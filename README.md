@@ -1,6 +1,5 @@
-% Fullstack Job Portal App – Backend  
-% Built with Node.js, Express, MongoDB  
-% April 2025
+
+
 
 # 🧠 Fullstack Job Portal – Backend Part
 
