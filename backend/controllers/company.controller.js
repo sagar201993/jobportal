@@ -1,8 +1,7 @@
-import { resolve } from "styled-jsx/macro";
 import { Company } from "../models/company.model.js";
 
 //register company
-export const registerCompany = async (res, req) => {
+export const registerCompany = async (req, res) => {
   try {
     const { companyName } = req.body;
     if (!companyName) {
