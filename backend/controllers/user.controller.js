@@ -5,42 +5,43 @@ import jwt from "jsonwebtoken";
 //register user first time
 export const register = async (req, res) => {
   try {
-    const { fullName, email, phoneNumber, password, role } = req.body;
-    if (!fullName || !email || !phoneNumber || !password || !role) {
-      return res
-        .status(400)
-        .json({ message: "Please fill all the fields", success: false });
-    }
+    const { fullname, email, phoneNumber, password, role } = req.body;
 
-    //use alreday exist or not
+    if (!fullname || !email || !phoneNumber || !password || !role) {
+      return res.status(400).json({
+        message: "Something is missing",
+        success: false,
+      });
+    }
+    const file = req.file;
+    //const fileUri = getDataUri(file);
+    //const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
     const user = await User.findOne({ email });
-
     if (user) {
-      return res
-        .status(400)
-        .json({ message: "User already exists", success: false });
+      return res.status(400).json({
+        message: "User already exist with this email.",
+        success: false,
+      });
     }
-
     const hashedPassword = await bcrypt.hash(password, 10);
+
     await User.create({
-      fullName,
+      fullname,
       email,
       phoneNumber,
       password: hashedPassword,
       role,
     });
+
     return res.status(201).json({
-      message: "User registered successfully",
+      message: "Account created successfully.",
       success: true,
     });
   } catch (error) {
-    return res.status(500).json({
-      message: "Internal server error",
-      success: false,
-    });
+    console.log(error);
   }
 };
-
 //login user
 export const login = async (req, res) => {
   try {
